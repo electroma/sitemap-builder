@@ -33,7 +33,7 @@ _mvn clean package assembly:single_
 
 === Run
 
-_java -jar app/target/sitemap-app.jar_  -url http://wiprodigital.com
+_java -jar app/target/sitemap-app.jar --url http://wiprodigital.com_
 
 === Optional parameters
 
