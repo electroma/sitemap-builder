@@ -1,0 +1,40 @@
+== Simple single-domain crawler implementation
+
+=== Core features
+
+* Parallel parse
+* URL filter
+* Slow response / too big / error code handling
+* Pluggable persistence options (inmem or persistent)
+* Pluggable results output (plain objects / graph / console )
+
+=== Possible optimizations / TODOs
+
+* HTTPS support
+* Robots.txt parsing
+* Distributed crawling execution (Hazelcast distributed scheduler)
+* Incremental revisit
+* Load testing
+
+=== Crawling primitives
+
+* custom crawl using https://jsoup.org/cookbook/extracting-data/attributes-text-html[JSoup]
+* use https://github.com/crawler-commons/crawler-commons[crowler-commons]
+
+=== Prereqs
+
+* JDK 8
+* Apache Maven
+* Internet connection
+
+=== Build
+
+_mvn clean package assembly:single_
+
+=== Run
+
+_java -jar app/target/sitemap-app.jar_  -url http://wiprodigital.com
+
+=== Optional parameters
+
+* -p --parallel NN - number of threads to be used by web crawler
