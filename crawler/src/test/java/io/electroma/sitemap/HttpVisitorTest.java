@@ -2,6 +2,7 @@ package io.electroma.sitemap;
 
 import com.sun.net.httpserver.HttpServer;
 import io.electroma.sitemap.api.VisitResult;
+import io.electroma.sitemap.parse.JSoupPageParser;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -32,21 +33,21 @@ public class HttpVisitorTest {
     @Test
     public void applyNonHtml() {
         configureResponse(200, "something", "");
-        final VisitResult apply = new HttpVisitor().apply("http://localhost:9999");
+        final VisitResult apply = new HttpVisitor(new JSoupPageParser()).apply("http://localhost:9999");
         assertEquals(VisitResult.Status.UNPARSABLE, apply.getStatus());
     }
 
     @Test
     public void applyNonOKCode() {
         configureResponse(500, "text/html", "");
-        final VisitResult apply = new HttpVisitor().apply("http://localhost:9999");
+        final VisitResult apply = new HttpVisitor(new JSoupPageParser()).apply("http://localhost:9999");
         assertEquals(VisitResult.Status.UNPARSABLE, apply.getStatus());
     }
 
     @Test
     public void applyHappyPath() {
         configureResponse(200, "text/html", "<a href=\"/test\">test</a>");
-        final VisitResult apply = new HttpVisitor().apply("http://localhost:9999");
+        final VisitResult apply = new HttpVisitor(new JSoupPageParser()).apply("http://localhost:9999");
         assertEquals(VisitResult.Status.OK, apply.getStatus());
     }
 

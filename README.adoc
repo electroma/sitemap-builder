@@ -10,6 +10,8 @@
 
 === Possible optimizations / TODOs
 
+* Progress reporting
+* Proxy support
 * HTTPS support
 * Robots.txt parsing
 * Distributed crawling execution (Hazelcast distributed scheduler)
@@ -19,7 +21,7 @@
 === Crawling primitives
 
 * custom crawl using https://jsoup.org/cookbook/extracting-data/attributes-text-html[JSoup]
-* use https://github.com/crawler-commons/crawler-commons[crowler-commons]
+* use https://github.com/crawler-commons/crawler-commons[crawler-commons]
 
 === Prereqs
 
@@ -38,3 +40,5 @@ _java -jar app/target/sitemap-app.jar --url http://wiprodigital.com_
 === Optional parameters
 
 * -p --parallel NN - number of threads to be used by web crawler
+* --css - include css links into sitemap
+* --img - include images into sitemap

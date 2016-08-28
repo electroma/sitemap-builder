@@ -18,4 +18,7 @@ public interface VisitResult {
     Status getStatus();
 
     Set<String> outLinks();
+    Set<String> scipts();
+    Set<String> css();
+    Set<String> images();
 }
